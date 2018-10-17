@@ -23,7 +23,7 @@ public class UC01CadastrarLivro {
 		}
 	}
 	@Test
-	public void CT01CadastrarLivroComISBNBranco() {
+	public void CT02CadastrarLivroComISBNBranco() {
 		try {
 			// cenario
 			Livro umLivro = new Livro();
@@ -36,5 +36,31 @@ public class UC01CadastrarLivro {
 			assertEquals("ISBN invalido",e.getMessage());
 		}
 	}
-
+	@Test
+	public void CT03CadastrarLivroComISBNNulo() {
+		try {
+			// cenario
+			Livro umLivro = new Livro();
+			// acao
+			umLivro.setIsbn(null);
+			umLivro.setTitulo("Engenharia de Softwar");
+			umLivro.setAutor("Pressman");
+		} catch (RuntimeException e) {
+			// verificacao
+			assertEquals("ISBN invalido",e.getMessage());
+		}
+	}
+	@Test
+	public void CT04CadastrarLivroComDadosValidos() {
+		
+			// cenario
+			Livro umLivro = new Livro();
+			// acao
+			umLivro.setIsbn("1111");
+			umLivro.setTitulo("Engenharia de Softwar");
+			umLivro.setAutor("Pressman");
+			// verificacao
+			assertEquals("1111",umLivro.getIsbn());
+		
+	}
 }
