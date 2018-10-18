@@ -13,10 +13,9 @@ public class UC05CadastrarUsuario {
 	public void CT01CadastrarUsuarioComDadosValidos() {
 		try {
 			// cenario
-			Usuario umAluno = new Usuario();
+			Usuario umUsuario;
 			// acao
-			umAluno.setRa("121212");
-			umAluno.setNome("Jose da Silva");
+			umUsuario = ObtemUsuario.comDadosValidos();
 		} catch (RuntimeException e) {
 			// verificacao
 			fail("nao deve falhar");
