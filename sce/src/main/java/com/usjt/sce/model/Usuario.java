@@ -12,7 +12,7 @@ public class Usuario {
 		if (ra == "" | ra == null) {
 			throw new RuntimeException("RA invalido");
 		}
-		this.ra = ra;
+		this.ra = ra; 
 	}
 
 	public String getNome() {
