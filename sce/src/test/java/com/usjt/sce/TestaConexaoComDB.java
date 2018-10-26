@@ -28,10 +28,10 @@ public class TestaConexaoComDB {
 	@Test
 	public void quandoConectaComSenhaInvalida_SQLException() {
 		// cenario
-		String url = "jdbc:mysql://localhost:3306/biblioteca";
-		String driver = "com.mysql.jdbc.Driver";
-		String usuario = "root";
-		String senha = "aaa"; // senha invalida
+		String url 		= "jdbc:mysql://localhost:3306/biblioteca";
+		String driver 	= "com.mysql.jdbc.Driver";
+		String usuario 	= "root";
+		String senha 	= "aaa"; // senha invalida
 		FabricaDeConexoes fabricaDeConexoes = null;
 		ConfiguraDB configuraDB = new ConfiguraDB(url, driver, usuario, senha);
 		fabricaDeConexoes = new FabricaDeConexoes(configuraDB);
@@ -39,10 +39,12 @@ public class TestaConexaoComDB {
 			// acao
 			fabricaDeConexoes.getConnection();
 			fail("deveria falhar");
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			// verificacao
 			System.out.println(e.getMessage());
-			assertEquals(e.getMessage(), "java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)");
+			assertEquals(e.getMessage(),
+					"java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)");
 		}
 	}
 }
