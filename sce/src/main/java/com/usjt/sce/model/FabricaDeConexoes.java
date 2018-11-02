@@ -44,7 +44,7 @@ public class FabricaDeConexoes {
 		} 
 		catch (Exception e) 
 		{
-			logger.info("Exceçãoo geral causa: " + e.getMessage());
+			logger.info("Exceção geral causa: " + e.getMessage());
 			throw new RuntimeException(e);
 		}
 	}
