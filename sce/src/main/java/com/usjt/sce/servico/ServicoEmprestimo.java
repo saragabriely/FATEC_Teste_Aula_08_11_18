@@ -1,6 +1,7 @@
 package com.usjt.sce.servico;
 
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import com.usjt.sce.model.Emprestimo;
@@ -36,5 +37,23 @@ public class ServicoEmprestimo {
 			
 			return emprestimo;
 		}
+	}
+	
+	/**
+	* Objetivo - verifica se a devolução esta atrasada
+	*
+	* @param umEmprestimo
+	* @return int < 0 se estiver atrasado e > 0 se estive no prazo
+	*/
+	public int devolucao(Emprestimo umEmprestimo) {
+		DateTime dataAtual = new DateTime();
+		
+		DateTimeFormatter fmt = DateTimeFormat.forPattern("YYYY/MM/dd");
+		
+		DateTime dataDevolucao = fmt.parseDateTime(umEmprestimo.getDataDevolucao());
+		
+		int dias = Days.daysBetween(dataAtual, dataDevolucao).getDays();
+		
+		return dias;
 	}
 }

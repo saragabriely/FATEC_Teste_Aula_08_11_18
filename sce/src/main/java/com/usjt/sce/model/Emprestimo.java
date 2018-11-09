@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -109,4 +110,24 @@ public class Emprestimo
 			return false;
 		}
 	}
+	
+	public boolean ehDomingo(String data) {
+		
+		boolean isValida = false;
+		
+		DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy/MM/dd");
+		
+		if (validaData(data) == true) {
+			
+			DateTime umaData = fmt.parseDateTime(data);
+			
+			if (umaData.dayOfWeek().getAsText().equals("Domingo")) {
+				isValida = true;
+			}
+		}
+		
+		return isValida;
+	}
+	
+	
 }
